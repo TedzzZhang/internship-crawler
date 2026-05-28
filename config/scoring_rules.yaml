@@ -1,0 +1,21 @@
+{
+  "max_score": 100,
+  "weights": {
+    "professional_relevance": 30,
+    "technical_depth": 20,
+    "company_value": 15,
+    "growth": 10,
+    "location": 8,
+    "time": 8,
+    "resume_match": 9
+  },
+  "levels": {
+    "A": ">= 80 强烈推荐投递",
+    "B": "65-79 值得投递",
+    "C": "50-64 可备选",
+    "D": "< 50 不建议优先投递"
+  },
+  "preferred_locations": ["北京", "天津", "上海", "苏州", "深圳", "广州", "杭州", "南京", "远程"],
+  "resume_match_background": ["Abaqus", "MATLAB", "力学", "软材料接触", "实验数据处理", "Python", "有限元"]
+}
+

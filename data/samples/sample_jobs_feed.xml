@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Sample Robotics Internship Feed</title>
+    <item>
+      <title>机器人触觉与力控算法实习生</title>
+      <description>机器人触觉、力控、接触力学、软材料实验数据处理，使用 Python 和 MATLAB，跨部门研发项目，暑期实习 2-3 months。</description>
+      <link>https://example.com/sample/robotics-haptics</link>
+      <pubDate>Thu, 28 May 2026 08:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
+

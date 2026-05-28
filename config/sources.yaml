@@ -1,0 +1,378 @@
+{
+  "global": {
+    "request_delay_seconds": 2,
+    "timeout_seconds": 20,
+    "user_agent": "internship-crawler/0.1 (+https://github.com/TedzzZhang/internship-crawler; respectful public-source collection)"
+  },
+  "sources": [
+    {
+      "name": "Sample Public Static Careers Page",
+      "type": "static_html",
+      "enabled": true,
+      "url": "data/samples/sample_public_jobs.html",
+      "company_name": "Sample Advanced Manufacturing",
+      "company_type": "高端制造",
+      "source_label": "sample_static_html",
+      "selectors": {
+        "item": "article.job",
+        "title": "h2",
+        "location": ".location",
+        "description": ".description",
+        "link": "a[href]"
+      }
+    },
+    {
+      "name": "Sample Public RSS Feed",
+      "type": "rss",
+      "enabled": true,
+      "url": "data/samples/sample_jobs_feed.xml",
+      "company_name": "Sample Robotics Lab",
+      "company_type": "机器人",
+      "source_label": "sample_rss"
+    },
+    {
+      "name": "Sample Public JSON API",
+      "type": "json_api",
+      "enabled": true,
+      "url": "data/samples/sample_jobs_api.json",
+      "items_path": "jobs",
+      "company_type": "新能源车/电池",
+      "source_label": "sample_json_api",
+      "field_map": {
+        "company_name": "company",
+        "title": "title",
+        "location": "city",
+        "raw_description": "description",
+        "application_link": "apply_url",
+        "internship_time": "internship_time",
+        "publish_date": "publish_date",
+        "deadline": "deadline"
+      }
+    },
+    {
+      "name": "Manual Sample CSV",
+      "type": "manual_csv",
+      "enabled": true,
+      "path": "data/samples/manual_jobs.csv",
+      "source_label": "sample_manual_csv"
+    },
+    {
+      "name": "Apple Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://jobs.apple.com/",
+      "company_name": "Apple",
+      "company_type": "知名外企",
+      "compliance_note": "请配置公开岗位搜索页；运行前检查 robots.txt 和页面条款。"
+    },
+    {
+      "name": "Tesla Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.tesla.com/careers",
+      "company_name": "Tesla",
+      "company_type": "车企",
+      "compliance_note": "仅采集公开岗位页面；如出现验证码/登录则跳过。"
+    },
+    {
+      "name": "Microsoft Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://jobs.careers.microsoft.com/",
+      "company_name": "Microsoft",
+      "company_type": "大厂",
+      "compliance_note": "优先使用公开页面/API；不绕过访问控制。"
+    },
+    {
+      "name": "Bosch Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.bosch.com/careers/",
+      "company_name": "Bosch",
+      "company_type": "知名外企",
+      "compliance_note": "需按公开岗位页调整 selectors。"
+    },
+    {
+      "name": "Siemens Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://jobs.siemens.com/",
+      "company_name": "Siemens",
+      "company_type": "知名外企",
+      "compliance_note": "需按公开岗位页调整 selectors。"
+    },
+    {
+      "name": "GE Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.ge.com/careers",
+      "company_name": "GE",
+      "company_type": "知名外企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "ABB Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://careers.abb/",
+      "company_name": "ABB",
+      "company_type": "知名外企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Schneider Electric Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.se.com/ww/en/about-us/careers/",
+      "company_name": "Schneider Electric",
+      "company_type": "知名外企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Honeywell Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://careers.honeywell.com/",
+      "company_name": "Honeywell",
+      "company_type": "知名外企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Continental Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.continental.com/en/career/",
+      "company_name": "Continental",
+      "company_type": "车企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "ZF Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://jobs.zf.com/",
+      "company_name": "ZF",
+      "company_type": "车企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Valeo Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://valeo.wd3.myworkdayjobs.com/en-US/valeo_jobs",
+      "company_name": "Valeo",
+      "company_type": "车企",
+      "compliance_note": "Workday 类页面可能需要渲染；不绕过登录或验证码。"
+    },
+    {
+      "name": "CATL Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.catl.com/",
+      "company_name": "CATL",
+      "company_type": "新能源车/电池",
+      "compliance_note": "请配置公开招聘页面 URL。"
+    },
+    {
+      "name": "BYD Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://job.byd.com/",
+      "company_name": "BYD",
+      "company_type": "新能源车/电池",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "NIO Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://nio.jobs.feishu.cn/",
+      "company_name": "NIO",
+      "company_type": "车企",
+      "compliance_note": "飞书招聘页如要求登录/验证码则跳过，建议手动导入。"
+    },
+    {
+      "name": "Li Auto Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.lixiang.com/employ",
+      "company_name": "Li Auto",
+      "company_type": "车企",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Xpeng Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://xiaopeng.jobs.feishu.cn/",
+      "company_name": "Xpeng",
+      "company_type": "车企",
+      "compliance_note": "飞书招聘页如要求登录/验证码则跳过，建议手动导入。"
+    },
+    {
+      "name": "Huawei Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://career.huawei.com/",
+      "company_name": "Huawei",
+      "company_type": "大厂",
+      "compliance_note": "仅公开页面；不处理登录态。"
+    },
+    {
+      "name": "DJI Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://we.dji.com/",
+      "company_name": "DJI",
+      "company_type": "机器人",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Xiaomi Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://hr.xiaomi.com/",
+      "company_name": "Xiaomi",
+      "company_type": "大厂",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Lenovo Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://jobs.lenovo.com/",
+      "company_name": "Lenovo",
+      "company_type": "大厂",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "Midea Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://careers.midea.com/",
+      "company_name": "Midea",
+      "company_type": "高端制造",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "SANY Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://job.sany.com.cn/",
+      "company_name": "SANY",
+      "company_type": "高端制造",
+      "compliance_note": "仅公开页面。"
+    },
+    {
+      "name": "XCMG Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.xcmg.com/",
+      "company_name": "XCMG",
+      "company_type": "高端制造",
+      "compliance_note": "请配置公开招聘页面 URL。"
+    },
+    {
+      "name": "COMAC Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.comac.cc/",
+      "company_name": "COMAC",
+      "company_type": "航空航天/高端制造",
+      "compliance_note": "请配置公开招聘页面 URL。"
+    },
+    {
+      "name": "CRRC Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.crrcgc.cc/",
+      "company_name": "CRRC",
+      "company_type": "轨道交通/高端制造",
+      "compliance_note": "请配置公开招聘页面 URL。"
+    },
+    {
+      "name": "Altair Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://altair.com/careers",
+      "company_name": "Altair",
+      "company_type": "CAE/仿真软件",
+      "compliance_note": "适合 CAE/仿真软件方向；仅公开页面。"
+    },
+    {
+      "name": "ANSYS Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.ansys.com/careers",
+      "company_name": "ANSYS",
+      "company_type": "CAE/仿真软件",
+      "compliance_note": "适合 CAE/仿真软件方向；仅公开页面。"
+    },
+    {
+      "name": "Dassault Systemes Careers",
+      "type": "static_html",
+      "enabled": false,
+      "url": "https://www.3ds.com/careers",
+      "company_name": "Dassault Systemes",
+      "company_type": "CAE/PLM 软件",
+      "compliance_note": "适合仿真、CAD/CAE、数字孪生方向；仅公开页面。"
+    },
+    {
+      "name": "高校就业信息网模板",
+      "type": "rss",
+      "enabled": false,
+      "url": "https://example.edu/career/rss.xml",
+      "company_name": "",
+      "company_type": "高校就业网",
+      "compliance_note": "将 URL 替换为学校公开 RSS/Atom；若无 RSS，可用 static_html 并配置 selectors。"
+    },
+    {
+      "name": "LinkedIn",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "通常需要登录且条款限制自动抓取；请使用手动导入链接/CSV。"
+    },
+    {
+      "name": "实习僧",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "平台可能有登录、验证码或反爬限制；仅支持手动导入。"
+    },
+    {
+      "name": "牛客",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "仅支持手动导入搜索结果或链接。"
+    },
+    {
+      "name": "Boss 直聘",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "强登录/风控平台，禁止自动绕过；仅支持手动导入。"
+    },
+    {
+      "name": "智联招聘",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "仅支持手动导入。"
+    },
+    {
+      "name": "猎聘",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "仅支持手动导入。"
+    },
+    {
+      "name": "前程无忧",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "仅支持手动导入。"
+    },
+    {
+      "name": "微信公众号招聘推文",
+      "type": "manual_only",
+      "enabled": false,
+      "compliance_note": "不自动爬取微信；支持聊天记录/复制文本导入。"
+    }
+  ]
+}

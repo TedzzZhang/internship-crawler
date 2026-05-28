@@ -1,0 +1,6 @@
+公司：某机器人公司
+机器人结构设计实习生
+地点：苏州
+JD：参与机器人末端执行器结构设计、接触力学分析、有限元验证，使用 SolidWorks、Abaqus、MATLAB，可实习三个月。
+投递：https://example.com/sample/wechat-robot
+

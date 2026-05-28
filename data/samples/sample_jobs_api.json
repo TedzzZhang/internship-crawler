@@ -1,0 +1,15 @@
+{
+  "jobs": [
+    {
+      "company": "CATL",
+      "title": "电池结构可靠性分析实习生",
+      "city": "上海",
+      "description": "面向电池包结构进行有限元、疲劳、振动和可靠性分析，使用 HyperMesh、Abaqus、Python，参与真实研发项目。",
+      "apply_url": "https://example.com/sample/catl-reliability",
+      "internship_time": "暑期实习 3个月",
+      "publish_date": "2026-05-28",
+      "deadline": "2026-06-30"
+    }
+  ]
+}
+
