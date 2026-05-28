@@ -7,7 +7,7 @@ from typing import Any
 from src.crawler.http_client import CompliantHttpClient
 from src.importer.manual_import import load_manual_file
 from src.models import JobPosting
-from src.parsers import json_api_parser, rss_parser, static_page_parser
+from src.parsers import json_api_parser, platform_public_parser, rss_parser, static_page_parser
 from src.utils.config import resolve_project_path
 
 LOGGER = logging.getLogger(__name__)
@@ -36,6 +36,8 @@ def parse_source(source: dict[str, Any], client: CompliantHttpClient) -> list[Jo
         return static_page_parser.parse(source, client)
     if source_type == "json_api":
         return json_api_parser.parse(source, client)
+    if source_type == "platform_public":
+        return platform_public_parser.parse(source, client)
     if source_type in {"manual_csv", "manual_text", "manual_html"}:
         path = Path(source.get("path") or source.get("url") or "")
         return load_manual_file(resolve_project_path(path))
@@ -44,4 +46,3 @@ def parse_source(source: dict[str, Any], client: CompliantHttpClient) -> list[Jo
         return []
     LOGGER.warning("Unknown source type %s for %s", source_type, source.get("name"))
     return []
-

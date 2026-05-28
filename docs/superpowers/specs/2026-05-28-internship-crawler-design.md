@@ -12,6 +12,7 @@ The MVP collects from configured public sources and manual imports, then cleans,
 
 - `src/crawler`: compliant HTTP access with request delay, User-Agent, robots.txt checks, logging, and local sample file support.
 - `src/parsers`: source-specific parsers for RSS/Atom, static HTML, and public JSON APIs.
+- `src/parsers/platform_public_parser.py`: restricted public platform parser that detects login, CAPTCHA, security checks, and similar access limits before parsing visible public cards.
 - `src/importer`: manual CSV/TXT/HTML import for platforms that should not be crawled automatically.
 - `src/cleaner`: company/location normalization, duplicate removal, and field extraction.
 - `src/scorer`: keyword and rule-based scoring with A/B/C/D recommendation levels.
@@ -25,9 +26,10 @@ Configured sources or manual import files produce `JobPosting` records. The clea
 
 ## Compliance
 
-The source config records disabled/manual-only platforms such as LinkedIn, Boss 直聘, 实习僧, 牛客, 智联, 猎聘, 前程无忧, and 微信公众号. The crawler checks robots.txt for HTTP(S) sources and logs skipped pages.
+The source config records disabled or restricted platforms such as LinkedIn, Boss 直聘, 实习僧, 牛客, 智联, 猎聘, 前程无忧, and 微信公众号. The crawler checks robots.txt for HTTP(S) sources and logs skipped pages.
+
+Platform sources can use `platform_public` when the user wants to try publicly visible search pages. These sources remain disabled by default and must not use cookies, login state, CAPTCHA solving, or anti-bot bypasses.
 
 ## Testing
 
 Tests cover manual CSV import, cleaning and deduplication, scoring/risk behavior, dated output naming, SQLite writes, and Markdown report generation.
-

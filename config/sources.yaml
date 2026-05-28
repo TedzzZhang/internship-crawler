@@ -57,6 +57,23 @@
       "source_label": "sample_manual_csv"
     },
     {
+      "name": "Sample Restricted Platform Public Page",
+      "type": "platform_public",
+      "enabled": true,
+      "url": "data/samples/sample_platform_public_jobs.html",
+      "source_label": "sample_platform_public",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构分析", "机器人", "力控"],
+      "selectors": {
+        "item": "article.job",
+        "title": "h2",
+        "company": ".company",
+        "location": ".location",
+        "description": ".description",
+        "link": "a[href]"
+      },
+      "compliance_note": "本地 sample；演示公开平台受限采集 parser。"
+    },
+    {
       "name": "Apple Careers",
       "type": "static_html",
       "enabled": false,
@@ -328,51 +345,75 @@
     },
     {
       "name": "LinkedIn",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "通常需要登录且条款限制自动抓取；请使用手动导入链接/CSV。"
+      "url": "https://www.linkedin.com/jobs/search/?keywords=CAE%20intern",
+      "source_label": "linkedin_public_restricted",
+      "must_contain_any_keywords": ["CAE", "FEA", "simulation", "mechanical", "intern"],
+      "compliance_note": "受限公开采集模板：仅在 robots.txt、条款和页面访问允许时低频采集；如要求登录、验证码或授权则跳过并改用手动导入。"
     },
     {
       "name": "实习僧",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "平台可能有登录、验证码或反爬限制；仅支持手动导入。"
+      "url": "https://www.shixiseng.com/interns?keyword=CAE",
+      "source_label": "shixiseng_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+      "compliance_note": "受限公开采集模板：仅采集公开可访问页面；如要求登录、验证码、App 或授权则跳过并改用手动导入。"
     },
     {
       "name": "牛客",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "仅支持手动导入搜索结果或链接。"
+      "url": "https://www.nowcoder.com/jobs/school",
+      "source_label": "nowcoder_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+      "compliance_note": "受限公开采集模板：仅采集公开可访问页面；如要求登录、验证码或授权则跳过并改用手动导入。"
     },
     {
       "name": "Boss 直聘",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "强登录/风控平台，禁止自动绕过；仅支持手动导入。"
+      "url": "https://www.zhipin.com/web/geek/job?query=CAE",
+      "source_label": "boss_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+      "compliance_note": "受限公开采集模板：不处理 Cookie、登录态、验证码或风控；触发限制则跳过并改用手动导入。"
     },
     {
       "name": "智联招聘",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "仅支持手动导入。"
+      "url": "https://sou.zhaopin.com/",
+      "source_label": "zhaopin_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+      "compliance_note": "受限公开采集模板：仅采集公开可访问页面；若条款、robots 或页面限制不允许则跳过并改用手动导入。"
     },
     {
       "name": "猎聘",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "仅支持手动导入。"
+      "url": "https://www.liepin.com/zhaopin/?key=CAE",
+      "source_label": "liepin_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+      "compliance_note": "受限公开采集模板：仅采集公开可访问页面；如要求登录、验证码或授权则跳过并改用手动导入。"
     },
     {
       "name": "前程无忧",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "仅支持手动导入。"
+      "url": "https://we.51job.com/pc/search?keyword=CAE",
+      "source_label": "51job_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+      "compliance_note": "受限公开采集模板：仅采集公开可访问页面；如要求登录、验证码或授权则跳过并改用手动导入。"
     },
     {
       "name": "微信公众号招聘推文",
-      "type": "manual_only",
+      "type": "platform_public",
       "enabled": false,
-      "compliance_note": "不自动爬取微信；支持聊天记录/复制文本导入。"
+      "url": "https://mp.weixin.qq.com/",
+      "source_label": "wechat_mp_public_restricted",
+      "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械", "机器人"],
+      "compliance_note": "受限公开采集模板：仅用于你手动提供的公开文章链接；不爬取登录态、聊天记录或公众号后台，失败时改用文本导入。"
     }
   ]
 }

@@ -87,3 +87,18 @@
 - [x] Run `python -m src.main run --date 2026-05-28`.
 - [x] Inspect generated output names.
 - [x] Initialize git, commit, add remote `https://github.com/TedzzZhang/internship-crawler.git`, and push.
+
+### Task 7: Restricted Public Platform Collection
+
+**Files:**
+- Create: `src/parsers/platform_public_parser.py`
+- Create: `tests/test_platform_public_parser.py`
+- Modify: `src/parsers/registry.py`
+- Modify: `src/parsers/static_page_parser.py`
+- Modify: `config/sources.yaml`
+- Modify: `README.md`
+
+- [x] Add a `platform_public` parser that detects login, CAPTCHA, security check, and similar restriction markers.
+- [x] Add keyword filtering for public platform result cards.
+- [x] Add restricted platform templates for LinkedIn, 实习僧, 牛客, Boss 直聘, 智联招聘, 猎聘, 前程无忧, and 微信公众号 with `enabled: false`.
+- [x] Add local sample platform HTML and verify it participates in the sample pipeline.

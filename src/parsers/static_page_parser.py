@@ -58,10 +58,11 @@ def parse_with_regex(html: str, source: dict[str, Any]) -> list[JobPosting]:
             continue
         link = first_match(block, [r"<a[^>]*href=[\"']([^\"']+)[\"']"])
         location = clean_html(first_match(block, [r"class=[\"']location[\"'][^>]*>(.*?)<"]))
+        company = clean_html(first_match(block, [r"class=[\"']company[\"'][^>]*>(.*?)<"]))
         description = clean_html(first_match(block, [r"class=[\"'](?:description|jd)[\"'][^>]*>(.*?)</"]))
         jobs.append(
             JobPosting(
-                company_name=source.get("company_name", ""),
+                company_name=company or source.get("company_name", ""),
                 company_type=source.get("company_type", ""),
                 title=title,
                 location=location,
@@ -88,4 +89,3 @@ def first_match(text: str, patterns: list[str]) -> str:
 def clean_html(value: str) -> str:
     value = re.sub(r"<[^>]+>", " ", value)
     return re.sub(r"\s+", " ", value).strip()
-

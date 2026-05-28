@@ -10,7 +10,7 @@
 - 对岗位做去重、字段提取、关键词识别、风险标注和综合评分。
 - 按 A/B/C/D 给出推荐等级。
 - 导出 Excel、CSV、SQLite 和 Markdown 日报。
-- 对 LinkedIn、Boss 直聘、实习僧、牛客、智联、猎聘、前程无忧、微信公众号等不适合自动爬取的平台，保留手动导入入口。
+- 对 LinkedIn、Boss 直聘、实习僧、牛客、智联、猎聘、前程无忧、微信公众号等平台，提供“受限公开采集”模板：只访问公开、robots/条款允许、无需登录或验证码的页面；触发限制时自动跳过并改用手动导入。
 
 ## 2. 安装方式
 
@@ -89,8 +89,23 @@ python -m src.main run --latest
 - `static_html`：公开静态网页。
 - `rss`：公开 RSS/Atom。
 - `json_api`：公开 JSON API。
+- `platform_public`：招聘平台公开页的受限采集模板，会检测登录、验证码、安全验证等限制标记。
 - `manual_csv` / `manual_text` / `manual_html`：手动导入。
 - `manual_only`：记录不适合自动采集的平台，运行时跳过。
+
+受限平台示例：
+
+```json
+{
+  "name": "Boss 直聘",
+  "type": "platform_public",
+  "enabled": false,
+  "url": "https://www.zhipin.com/web/geek/job?query=CAE",
+  "source_label": "boss_public_restricted",
+  "must_contain_any_keywords": ["CAE", "有限元", "仿真", "结构", "机械"],
+  "compliance_note": "受限公开采集模板：不处理 Cookie、登录态、验证码或风控；触发限制则跳过并改用手动导入。"
+}
+```
 
 ## 5. 如何添加新公司
 
@@ -202,7 +217,7 @@ crontab -e
 - 默认请求间隔为 2 秒，可在 `config/sources.yaml` 的 `global.request_delay_seconds` 调整。
 - HTTP 客户端会使用自定义 User-Agent，并检查 robots.txt。
 - 如果 robots.txt 不允许抓取，程序会跳过并写日志。
-- LinkedIn、Boss 直聘、实习僧、牛客、智联、猎聘、前程无忧、微信公众号默认不自动采集，只支持手动导入。
+- LinkedIn、Boss 直聘、实习僧、牛客、智联、猎聘、前程无忧、微信公众号已配置为 `platform_public` 受限采集模板，但默认 `enabled: false`；确认公开可访问、robots/条款允许后可启用，触发登录、验证码、安全验证、App 跳转或访问限制时会跳过并写日志。
 - 不要把本工具用于高频、大规模、商业化抓取。
 
 ## 11. 项目结构
@@ -240,4 +255,3 @@ python -m pytest -q
 ```
 
 当前 sample 数据只用于验证流程，不代表真实招聘信息。
-
