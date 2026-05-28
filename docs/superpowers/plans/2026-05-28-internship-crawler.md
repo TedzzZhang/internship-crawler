@@ -86,4 +86,4 @@
 - [x] Run `python -m pytest -q`.
 - [x] Run `python -m src.main run --date 2026-05-28`.
 - [x] Inspect generated output names.
-- [ ] Initialize git, commit, add remote `https://github.com/TedzzZhang/internship-crawler.git`, and push.
+- [x] Initialize git, commit, add remote `https://github.com/TedzzZhang/internship-crawler.git`, and push.
